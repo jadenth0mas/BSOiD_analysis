@@ -65,10 +65,26 @@ Video Data → DeepLabCut → B-SOID → Statistical Analysis → SUDEP Risk Mod
 **Key Packages:**
 - `tidyverse`: Data manipulation and visualization
 - `lme4`: Mixed effects modeling
+- `lmerTest`: Statistical Tests for lme4
 - `MASS`: LDA implementation
-- : PCA visualization
-- `cluster`: Hierarchical clustering
+- `syndRomics`: PCA
+- `pvclust`: Hierarchical clustering
 - `ggplot2`: Publication-quality figures
+- `rstatix`: Statistical Tests
+- `pROC`: ROC and AUC
+- `reshape2`: melt function
+**Other Stylistic Packages:**
+- `ggsci`
+- `ggpubr`
+- `ggrepel`
+- `gridExtra`
+- `ggh4x`
+- `pheatmap`
+- `RColorBrewer`
+- `dendextend`
+- `viridis`
+- `extrafont`
+- `patchwork`
 
 **Related Tools (upstream processing, not included):**
 - [DeepLabCut](https://github.com/DeepLabCut/DeepLabCut): Pose estimation from video
@@ -79,56 +95,6 @@ Video Data → DeepLabCut → B-SOID → Statistical Analysis → SUDEP Risk Mod
 **Note:** The behavioral data used in this analysis is not uploaded in this repository. The code is provided to demonstrate statistical methodology and analytical approach. 
 
 Researchers interested in the data should contact the Gu Lab at The Ohio State University.
-
-## Installation & Usage
-
-### Prerequisites
-```r
-# Install required packages
-install.packages(c("tidyverse", "lme4", "MASS", "factoextra", 
-                   "cluster", "ggplot2", "cowplot"))
-```
-
-### Running the Analysis
-
-The scripts are numbered in the order they should be run. Each script is self-contained with detailed comments.
-
-```r
-# Example: Run PCA analysis
-source("02_exploratory_pca.R")
-
-# Example: Fit mixed effects model
-source("05_mixed_effects_models.R")
-```
-
-### Expected Inputs
-
-Each analysis script expects data derived from the B-SOID pipeline:
-
-**Behavioral Expression Data:**
-- Time-series of behavior group assignments (output from B-SOID)
-- Behavioral bout features: duration, frequency, transition probabilities
-- Pose-derived metrics from DeepLabCut keypoints (when applicable)
-
-**Metadata:**
-- Subject ID, genotype, experimental timepoint
-- Seizure annotations and outcomes (including SUDEP events)
-- Experimental conditions and covariates
-
-**Data Structure Example:**
-```r
-# Expected format for behavioral expression
-behavior_data <- data.frame(
-  subject_id = c("M001", "M001", ...),
-  timepoint = c(1, 2, ...),
-  behavior_group = c(3, 7, 3, ...),  # B-SOID cluster assignment
-  bout_duration = c(2.3, 1.5, ...),
-  genotype = c("WT", "WT", ...),
-  sudep_outcome = c(0, 0, ...)
-)
-```
-
-See inline comments in each script for specific requirements.
 
 ## Publication
 
@@ -148,12 +114,9 @@ Statistical analysis conducted as Student Research Assistant in the Gu Lab (Marc
 
 - **Principal Investigator:** Dr. Bin Gu, The Ohio State University
 - **Collaborators:** Gu Lab members and co-authors
-- Funded by [include if you know the funding source]
 
 ## License
 
 Code is provided for educational and research purposes. Please cite the publication if you use or adapt these methods.
 
 ---
-
-*For questions about the methodology or code, please open an issue or contact me via [your email/LinkedIn].*
